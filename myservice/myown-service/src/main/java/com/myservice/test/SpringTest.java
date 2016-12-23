@@ -1,6 +1,7 @@
 package com.myservice.test;
 
-import com.utils.SpringContextUtil;
+
+import com.jersey.test.utils.SpringContextUtil;
 
 import java.util.ServiceConfigurationError;
 
@@ -11,7 +12,7 @@ public class SpringTest {
 
     public static void main(String args[]){
 
-        ServiceConfigurationError ser = (ServiceConfigurationError)SpringContextUtil.getBean("commentService");
+        ServiceConfigurationError ser = (ServiceConfigurationError) SpringContextUtil.getBean("commentService");
         System.out.println("test");
     }
 }

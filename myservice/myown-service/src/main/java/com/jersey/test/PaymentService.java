@@ -5,6 +5,8 @@ package com.jersey.test;
  */
 
 import com.jersey.test.service.TransactionBo;
+import com.jersey.test.service.serviceImpl.TransactionBoImpl;
+import com.jersey.test.utils.SpringContextUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +25,14 @@ public class PaymentService {
     @Path("/mkyong")
     public Response savePayment() {
 
-        String result = transactionBo.save();
+        /**
+         * 两种访问方式：1、自动注入   2、手动SpringContextUtil调用
+         */
+
+//        String result = transactionBo.save();
+
+        TransactionBoImpl tranImp = (TransactionBoImpl) SpringContextUtil.getBean("transactionBoImpl");
+        String result = tranImp.save();
 
         return Response.status(200).entity(result).build();
 
